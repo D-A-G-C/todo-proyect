@@ -4,6 +4,9 @@ import { useLocalStorage } from "./userLocalStorage";
 const TodoContext = React.createContext()
 
 function TodoProvider({ children }) {
+
+    const [emptyTodo] = React.useState("¡Crea tu primer TODO!")
+
     const {
         item: todos,
         saveItem: saveTodos,
@@ -73,13 +76,6 @@ function TodoProvider({ children }) {
         </TodoContext.Provider>
     );
 }
-
-function TodoConsumer() {
-    return (
-        <TodoContext.Consumer></TodoContext.Consumer>
-    );
-}
-
 
 
 export { TodoContext, TodoProvider }

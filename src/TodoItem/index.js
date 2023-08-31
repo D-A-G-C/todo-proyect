@@ -3,11 +3,14 @@ import { DeleteIcon } from '../TodoIcon/DeleteIcon'
 import './TodoItem.css';
 
 function TodoItem(props) {
+
+  const { completed, onComplete } = props
+
   return (
     <li className="TodoItem">
       <CompleteIcon
-        completed={props.completed}
-        onComplete={props.onComplete}
+        completed={completed}
+        onComplete={onComplete}
       />
 
       <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>

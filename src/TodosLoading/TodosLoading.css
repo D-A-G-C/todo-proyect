@@ -18,7 +18,9 @@
 }
 
 .LoadingTodo-completeIcon,
-.LoadingTodo-deleteIcon {
+.LoadingTodo-deleteIcon,
+.LoadingTodo-upIcon,
+.LoadingTodo-downIcon {
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -39,10 +41,23 @@
     right: 0;
 }
 
+.LoadingTodo-upIcon {
+    position: absolute;
+    top: -24px;
+    right: 50px;
+}
+
+.LoadingTodo-downIcon {
+    position: absolute;
+    top: -24px;
+    right: 98px;
+}
 
 .LoadingTodo-container,
 .LoadingTodo-completeIcon,
-.LoadingTodo-deleteIcon {
+.LoadingTodo-deleteIcon,
+.LoadingTodo-upIcon,
+.LoadingTodo-downIcon {
     background: linear-gradient(90deg, rgba(250, 250, 250, 1), rgb(200, 199, 199));
     background-size: 400% 400%;
     animation: loadingAnimation 3s ease-in-out infinite;

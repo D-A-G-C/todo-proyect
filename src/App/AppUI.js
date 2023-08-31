@@ -11,6 +11,10 @@ import { Modal } from "../Modal";
 import { TodoContext } from "../TodoContext";
 import { TodoForm } from "../TodoForm";
 
+const handlerTotalTodos = (text) => {
+    console.log(text);
+}
+
 function AppUi() {
     const {
         loading,
@@ -35,18 +39,18 @@ function AppUi() {
                 </>)}
                 {error && <TodosError />}
                 {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
-
                 {searchedTodos.map(todo => (
-                    <TodoItem
-                        key={todo.text}
-                        text={todo.text}
-                        completed={todo.completed}
-                        onComplete={() => completeTodo(todo.text)}
-                        onDelete={() => deleteTodo(todo.text)}
-                        onUpPosition={() => upPosition(todo.text)}
-                        onLowerPosition={() => lowerPosition(todo.text)}
-                    />
+                <TodoItem
+                    key={todo.text}
+                    text={todo.text}
+                    completed={todo.completed}
+                    onComplete={() => completeTodo(todo.text)}
+                    onDelete={() => deleteTodo(todo.text)}
+                    onUpPosition={() => upPosition(todo.text)}
+                    onLowerPosition={() => lowerPosition(todo.text)}
+                />
                 ))}
+
             </TodoList>
             <CreateTodoButton setOpenModal={setOpenModal} />
 

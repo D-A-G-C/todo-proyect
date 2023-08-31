@@ -18,6 +18,8 @@ function AppUi() {
         searchedTodos,
         completeTodo,
         deleteTodo,
+        upPosition,
+        lowerPosition,
         openModal,
         setOpenModal,
     } = React.useContext(TodoContext);
@@ -41,6 +43,8 @@ function AppUi() {
                         completed={todo.completed}
                         onComplete={() => completeTodo(todo.text)}
                         onDelete={() => deleteTodo(todo.text)}
+                        onUpPosition={() => upPosition(todo.text)}
+                        onLowerPosition={() => lowerPosition(todo.text)}
                     />
                 ))}
             </TodoList>

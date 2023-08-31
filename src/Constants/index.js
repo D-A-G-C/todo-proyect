@@ -1,5 +1,4 @@
 export const constants = { 
-    test: "Vainas",
-    test2: "Vainitas Agradables"
+    test: "¡Crea tu primer ToDo!",
 };
 

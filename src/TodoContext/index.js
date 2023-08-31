@@ -5,8 +5,6 @@ const TodoContext = React.createContext()
 
 function TodoProvider({ children }) {
 
-    const [emptyTodo] = React.useState("¡Crea tu primer TODO!")
-
     const {
         item: todos,
         saveItem: saveTodos,
@@ -20,6 +18,7 @@ function TodoProvider({ children }) {
     const completedTodos = todos.filter(
         todo => !!todo.completed
     ).length;
+
     const totalTodos = todos.length;
 
     const searchedTodos = todos.filter(
@@ -44,7 +43,7 @@ function TodoProvider({ children }) {
         const todoIndex = newTodos.findIndex(
             (todo) => todo.text === text
         );
-        newTodos[todoIndex].completed = true;
+        newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
         saveTodos(newTodos);
     };
 
@@ -54,6 +53,24 @@ function TodoProvider({ children }) {
             (todo) => todo.text === text
         );
         newTodos.splice(todoIndex, 1);
+        saveTodos(newTodos);
+    };
+
+    const upPosition = (text) => {
+        const newTodos = [...todos];
+        const todoIndex = newTodos.findIndex(
+            (todo) => todo.text === text
+        );
+        newTodos.splice(todoIndex - 1, 0, newTodos.splice(todoIndex, 1).pop());
+        saveTodos(newTodos);
+    };
+
+    const lowerPosition = (text) => {
+        const newTodos = [...todos];
+        const todoIndex = newTodos.findIndex(
+            (todo) => todo.text === text
+        );
+        newTodos.splice(todoIndex + 1, 0, newTodos.splice(todoIndex, 1).pop());
         saveTodos(newTodos);
     };
 
@@ -70,7 +87,9 @@ function TodoProvider({ children }) {
             deleteTodo,
             openModal,
             setOpenModal,
-            addTodo
+            addTodo,
+            upPosition,
+            lowerPosition
         }}>
             {children}
         </TodoContext.Provider>

@@ -1,7 +1,7 @@
-import React from "react";
+import { useState, createContext} from "react";
 import { useLocalStorage } from "./userLocalStorage";
 
-const TodoContext = React.createContext()
+const TodoContext = createContext()
 
 function TodoProvider({ children }) {
 
@@ -11,8 +11,10 @@ function TodoProvider({ children }) {
         loading,
         error
     } = useLocalStorage('TODOS_V1', []);
-    const [searchValue, setSearchValue] = React.useState('');
-    const [openModal, setOpenModal] = React.useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const [openModal, setOpenModal] = useState(false);
+    const [showUp, setShowUp] = useState(false);
+    const [showDown, setShowDown] = useState(false);
 
 
     const completedTodos = todos.filter(
@@ -89,7 +91,9 @@ function TodoProvider({ children }) {
             setOpenModal,
             addTodo,
             upPosition,
-            lowerPosition
+            lowerPosition,
+            showUp,
+            showDown
         }}>
             {children}
         </TodoContext.Provider>

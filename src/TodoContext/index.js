@@ -13,8 +13,8 @@ function TodoProvider({ children }) {
     } = useLocalStorage('TODOS_V1', []);
     const [searchValue, setSearchValue] = useState('');
     const [openModal, setOpenModal] = useState(false);
-    const [showUp, setShowUp] = useState(false);
-    const [showDown, setShowDown] = useState(false);
+    const [showUp, setShowUp] = useState(true);
+    const [showDown, setShowDown] = useState(true);
 
 
     const completedTodos = todos.filter(
